@@ -91,6 +91,7 @@ extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDat
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! TempleCell
         cell.imgTemple.image = TempleCardManager.sharedInstance.templeForIndex(indexPath.row)!.image
         cell.lblName.text = TempleCardManager.sharedInstance.templeForIndex(indexPath.row)!.name
+        
         return cell
     }
     
