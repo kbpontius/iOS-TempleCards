@@ -11,14 +11,17 @@ import UIKit
 class TempleTableView: UITableViewController {
     var templeDelegate: TempleTableViewDelegate!
     
+    // MARK: - TABLEVIEW METHODS
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        cell.textLabel!.text = TempleCardManager.sharedInstance.templeForIndex(indexPath.row)!.name
+        let templeCell = TempleCardManager.sharedInstance.availableTempleForIndex(indexPath.row)
+        cell.textLabel!.text = templeCell!.name
         return cell
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return TempleCardManager.sharedInstance.getTempleCount()
+        return TempleCardManager.sharedInstance.getAvailableTempleCount()
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -26,6 +29,7 @@ class TempleTableView: UITableViewController {
     }
 }
 
+// MARK: - TEMPLETABLEVIEWDELEGATE PROTOCOL
 protocol TempleTableViewDelegate {
     func didSelectRowAtIndexPath(row: Int)
 }

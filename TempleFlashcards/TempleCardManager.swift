@@ -58,6 +58,16 @@ class TempleCardManager {
         Temple(filename: "mexico-city-temple-lds-591669-mobile.jpg", name: "Mexico City Mexico")
     ]
     
+    // MARK: - GETTERS
+    func availableTempleForIndex(index: Int) -> Temple? {
+        let currentTempleList = getAvailableTempleList()
+        if index >= 0 && index < currentTempleList.count {
+            return currentTempleList[index]
+        }
+        
+        return nil
+    }
+    
     func templeForIndex(index: Int) -> Temple? {
         if index >= 0 && index < templeList.count {
             return templeList[index]
@@ -66,7 +76,27 @@ class TempleCardManager {
         return nil
     }
     
-    func getTempleCount() -> Int {
+    func getAvailableTempleCount() -> Int {
+        return getAvailableTempleList().count
+    }
+    
+    func getTotallTempleCount() -> Int {
         return templeList.count
+    }
+    
+    // MARK: - SETTERS
+    func resetAllTemples() {
+        for temple in templeList {
+            temple.hasBeenPicked = false
+        }
+    }
+    
+    func setIsPicked(index: Int, isPicked: Bool) {
+        getAvailableTempleList()[index].hasBeenPicked = isPicked
+    }
+    
+    // MARK: - HELPER METHODS
+    private func getAvailableTempleList() -> [Temple] {
+        return templeList.filter { $0.hasBeenPicked == false }
     }
 }
