@@ -14,6 +14,8 @@ class ContainerViewController: UIViewController {
     @IBOutlet weak var lcCllnVwRightConstraint: NSLayoutConstraint!
     @IBOutlet weak var lcTableViewRightConstraint: NSLayoutConstraint!
     @IBOutlet weak var lcTableViewWidth: NSLayoutConstraint!
+    @IBOutlet weak var lcStatusMessageRightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var lcStatusMessageWidth: NSLayoutConstraint!
     @IBOutlet weak var lblStatus: UILabel!
     @IBOutlet weak var vwStatusBackground: UIView!
     
@@ -35,11 +37,18 @@ class ContainerViewController: UIViewController {
     
     private var scoreMatches = 0 {
         didSet {
+            if scoreMatches != 0 {
+                updateStatusMessage("Correct Match", highlight: true)
+            }
             updateScore()
         }
     }
     private var scoreAttempts = 0 {
         didSet {
+            if scoreAttempts != 0 {
+                updateStatusMessage("Incorrect Match", highlight: true, backgroundHighlightColor: UIColor.redColor())
+            }
+            
             updateScore()
         }
     }
@@ -77,7 +86,7 @@ class ContainerViewController: UIViewController {
     }
     
     private func setupStatusBar() {
-        updateStatusMessage("", highlight: false)
+        updateStatusMessage("Welcome", highlight: false)
     }
     
     // MARK: - NAVIGATION METHODS
@@ -97,10 +106,12 @@ class ContainerViewController: UIViewController {
             isStudyMode = false
             self.lcCllnVwRightConstraint.constant += self.lcTableViewWidth.constant
             self.lcTableViewRightConstraint.constant += self.lcTableViewWidth.constant
+            self.lcStatusMessageRightConstraint.constant += self.lcTableViewWidth.constant
         } else {
             isStudyMode = true
             self.lcCllnVwRightConstraint.constant -= self.lcTableViewWidth.constant
             self.lcTableViewRightConstraint.constant -= self.lcTableViewWidth.constant
+            self.lcStatusMessageRightConstraint.constant -= self.lcTableViewWidth.constant
         }
         
         UIView.animateWithDuration(0.3) {
@@ -133,16 +144,16 @@ class ContainerViewController: UIViewController {
         cllnvwTempleCards.setContentOffset(CGPointZero, animated: true)
         tableVC.tableView.setContentOffset(CGPointZero, animated: true)
         
-        updateStatusMessage("Successfully Reset", highlight: true)
+        updateStatusMessage("Successfully Reset", highlight: true, backgroundHighlightColor: UIColor.yellowColor())
     }
     
     // MARK: - HELPER METHODS
     
-    private func updateStatusMessage(message: String, highlight: Bool) {
+    private func updateStatusMessage(message: String, highlight: Bool, backgroundHighlightColor: UIColor = UIColor(red: 142/255, green: 255/255, blue: 157/255, alpha: 1.0)) {
         lblStatus.text = message
         
         if highlight {
-            vwStatusBackground.backgroundColor = UIColor(red: 142/255, green: 255/255, blue: 157/255, alpha: 1.0)
+            vwStatusBackground.backgroundColor = backgroundHighlightColor
             UIView.animateWithDuration(1.0, delay: 0, options: .CurveEaseOut, animations: {
                 self.vwStatusBackground.backgroundColor = UIColor.darkGrayColor()
             }, completion: nil)

@@ -140,7 +140,6 @@
                                     <constraint firstAttribute="trailing" secondItem="1yO-Gf-N7g" secondAttribute="trailing" id="8kk-Ob-vDH"/>
                                     <constraint firstItem="1yO-Gf-N7g" firstAttribute="top" secondItem="Sfr-Jd-WgG" secondAttribute="top" id="LVj-lF-UzM"/>
                                     <constraint firstItem="1yO-Gf-N7g" firstAttribute="leading" secondItem="Sfr-Jd-WgG" secondAttribute="leading" id="c0f-J8-RFX"/>
-                                    <constraint firstAttribute="width" constant="225" id="fa2-56-cEL"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -154,9 +153,10 @@
                             <constraint firstItem="Sfr-Jd-WgG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="AUy-Ri-JYa"/>
                             <constraint firstAttribute="trailing" secondItem="kXj-H9-x7M" secondAttribute="trailing" id="FIG-aB-3cZ"/>
                             <constraint firstAttribute="trailing" secondItem="Ud2-fL-mQ0" secondAttribute="trailing" id="NAC-ht-ZJn"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Sfr-Jd-WgG" secondAttribute="trailing" constant="-20" id="T7d-af-014"/>
+                            <constraint firstAttribute="trailing" secondItem="Sfr-Jd-WgG" secondAttribute="trailing" id="T7d-af-014"/>
                             <constraint firstItem="kXj-H9-x7M" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="bhW-y1-dhy"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Voi-Uw-UMu" secondAttribute="bottom" id="jTg-pZ-5KZ"/>
+                            <constraint firstItem="Sfr-Jd-WgG" firstAttribute="width" secondItem="kXj-H9-x7M" secondAttribute="width" id="nMv-9O-LMf"/>
                             <constraint firstItem="Voi-Uw-UMu" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="qPf-K4-XtY"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Ud2-fL-mQ0" secondAttribute="bottom" id="uye-1j-2Rk"/>
                         </constraints>
@@ -167,6 +167,8 @@
                         <outlet property="cllnvwTempleCards" destination="Voi-Uw-UMu" id="mWb-wy-oWC"/>
                         <outlet property="lblStatus" destination="1yO-Gf-N7g" id="N8a-kC-rKb"/>
                         <outlet property="lcCllnVwRightConstraint" destination="9Y1-Dd-nKy" id="pXo-TB-bHT"/>
+                        <outlet property="lcStatusMessageRightConstraint" destination="T7d-af-014" id="HmH-5e-0hU"/>
+                        <outlet property="lcStatusMessageWidth" destination="nMv-9O-LMf" id="t0M-dc-LXg"/>
                         <outlet property="lcTableViewRightConstraint" destination="FIG-aB-3cZ" id="iTH-Bd-f4f"/>
                         <outlet property="lcTableViewWidth" destination="9i6-4o-BaE" id="DDR-2e-7N0"/>
                         <outlet property="toolbar" destination="Ud2-fL-mQ0" id="VS3-x2-MJu"/>
