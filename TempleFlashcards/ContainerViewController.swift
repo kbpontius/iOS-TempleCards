@@ -105,6 +105,7 @@ extension ContainerViewController: UICollectionViewDelegate, UICollectionViewDat
     }
 }
 
+// MARK: - DELEGATE METHODS
 extension ContainerViewController: TempleTableViewDelegate {
     func didSelectRowAtIndexPath(row: Int) {
         selectedNameIndex = row
